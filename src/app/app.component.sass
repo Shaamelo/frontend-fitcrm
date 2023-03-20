@@ -1,0 +1,29 @@
+$nav-height: 70px
+.navigation
+    display: flex
+    flex-direction: row
+    height: $nav-height
+    background: var(--gray)
+    .nav-link
+        display: flex
+        justify-content: center
+        align-items: center
+        color: var(--white)
+        text-decoration: none
+        padding: 0 25px
+        font-weight: 500
+        &:hover
+            background: var(--light-gray)         
+        &.active
+            color: var(--primary)
+            border-bottom: 5px solid var(--primary)
+            p
+                margin-top: 5px
+.icon-wrapper
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 0 15px
+    .icon
+        font-size: 3.5rem
+        color: var(--white)
