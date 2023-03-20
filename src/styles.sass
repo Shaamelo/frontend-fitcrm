@@ -23,4 +23,32 @@ th
     text-align: left
 td
     font-weight: 600
+    padding: 5px 0
+
+.container
+    display: flex
+    flex-direction: column
+    padding: 50px
+    .title
+        display: flex
+        flex-direction: row
+        align-items: center
+        .big-button
+            color: var(--white)
+            text-decoration: none
+            padding: 7.5px 15px
+            border-radius: 20px
+            margin-left: 40px
+            transition: 0.5s
+            &.add-button
+                background: var(--primary) 
+            &.back-button
+                background: var(--light-gray)
+            &:hover
+                transform: scale(1.1)
+    hr
+        margin: 50px 0
+        border: none
+        height: 2px
+        background: var(--light-gray)
 
