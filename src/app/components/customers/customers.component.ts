@@ -10,10 +10,8 @@ import { Customer } from 'src/app/types/Customer';
 export class CustomersComponent implements OnInit {
   constructor(private customersService: CustomerService) {}
   customers: Customer[] = [];
-  date: string = Date();
 
   ngOnInit(): void {
     this.customers = this.customersService.getCustomers();
-    console.log(this.date);
   }
 }

@@ -1,8 +1,14 @@
 <nav class="navigation">
-    <div class="icon-wrapper"><span class="material-symbols-outlined icon">logo_dev</span></div>
-    <a [routerLinkActive]="'active'" class="nav-link" routerLink="customers"><p>Clientes</p></a>
-    <a [routerLinkActive]="'active'" class="nav-link" routerLink="crm"><p>Enviar mensaje</p></a>
+  <div class="icon-wrapper">
+    <span class="material-symbols-outlined icon">logo_dev</span>
+  </div>
+  <a [routerLinkActive]="'active'" class="nav-link" routerLink="customers"
+    ><p>Clientes</p></a
+  >
+  <a [routerLinkActive]="'active'" class="nav-link" routerLink="crm"
+    ><p>Enviar mensaje</p></a
+  >
 </nav>
 <div class="content">
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

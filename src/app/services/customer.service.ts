@@ -1,11 +1,20 @@
 import { Injectable } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
 import { Customer } from '../types/Customer';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
+  URL: string = '';
+
+  // constructor(private http: HttpClient) {}
   constructor() {}
+
+  // getCustomers2(): Observable<any> {
+  //   return this.http.get<Customer[]>(this.URL);
+  // }
 
   getCustomers() {
     return [
