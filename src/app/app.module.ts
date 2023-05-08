@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { SendMessageComponent } from './components/send-message/send-message.component';
 import { CreateCustomerComponent } from './components/customers/create-customer/create-customer.component';
+import { CustomerComponent } from './components/customers/customer/customer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomersComponent,
     SendMessageComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    CustomerComponent
   ],
   imports: [
     BrowserModule,

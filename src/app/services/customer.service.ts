@@ -2,32 +2,61 @@ import { Injectable } from '@angular/core';
 import { Customer } from '../types/Customer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
-
-  constructor() { }
+  constructor() {}
 
   getCustomers() {
-    return[
+    return [
       {
-        id: 1,
-        name: "Gabriel Cornejo",
-        documentType: "CC",
-        document: "123456789",
+        id: '1',
+        name: 'Gabriel Cornejo',
+        documentType: 'CC',
+        documentNumber: '123456789',
+        birthDate: new Date('2001-03-07').toISOString(),
         age: 22,
-        email: "gabrielcornejo@mail.com",
-        cellphone: "311123456"
+        address: 'casita',
+        email: 'gabrielcornejo@mail.com',
+        phone: 311123456,
+        remainingDays: 10,
+        emergencyContact: {
+          name: 'persona',
+          email: 'correo@mail.com',
+          phone: '123456789',
+          relationship: 'es complicado',
+        },
+        medicInformation: {
+          weight: 1,
+          height: 1,
+          gender: 'H',
+          diseases: ['uno', 'dos', 'tres'],
+        },
       },
       {
-        id: 2,
-        name: "Juan Esteban Galeano Herrera",
-        documentType: "CC",
-        document: "987654321",
+        id: '2',
+        name: 'Juan Esteban Galeano Herrera',
+        documentType: 'CC',
+        documentNumber: '987654321',
+        birthDate: new Date().toISOString(),
         age: 22,
-        email: "galrepre@mail.com",
-        cellphone: "322222222"
-      }
-    ]
+        address: 'casita',
+        email: 'galrepre@mail.com',
+        phone: 322222222,
+        remainingDays: 10,
+        emergencyContact: {
+          name: 'persona',
+          email: 'correo@mail.com',
+          phone: '123456789',
+          relationship: 'a',
+        },
+        medicInformation: {
+          weight: 1,
+          height: 1,
+          gender: 'H',
+          diseases: ['uno', 'dos', 'tres'],
+        },
+      },
+    ];
   }
 }

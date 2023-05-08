@@ -1,0 +1,31 @@
+.customerCard
+  background: #d5d5d576
+  border-radius: 5px
+  padding: 10px 15px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  
+  &:hover
+    background: #d5d5d5dc
+  .icons
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    width: 130px
+    min-width: 130px
+    span
+      color: white
+      padding: 5px
+      border-radius: 10px
+      transition: 0.3s
+      cursor: pointer
+      &:hover
+        transform: scale(1.2)
+      &.info
+        background: #2980b9
+      &.delete
+        background: #e74c3c
+      &.edit
+        background: #f1c40f

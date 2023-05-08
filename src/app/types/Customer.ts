@@ -1,19 +1,27 @@
-export class Customer {
-    id: number;
-    name: string;
-    documentType: string;
-    document: string;
-    age: number;
-    email: string;
-    cellphone: string;
+interface EmergencyContact {
+  name: string;
+  email: string;
+  phone: string;
+  relationship: string;
+}
+interface MedicInformation {
+  weight: number;
+  height: number;
+  gender: string;
+  diseases: string[];
+}
 
-    constructor(id: number, name: string, documentType: string, document: string, age: number, email: string, cellphone: string) {
-        this.id = id;
-        this.name = name;
-        this.documentType = documentType;
-        this.document = document;
-        this.age = age;
-        this.email = email;
-        this.cellphone = cellphone;
-    }
+export interface Customer {
+  id?: string;
+  name: string;
+  documentType: string;
+  documentNumber: string;
+  birthDate: string;
+  age?: number;
+  address: string;
+  email: string;
+  phone: number;
+  remainingDays: number;
+  emergencyContact: EmergencyContact;
+  medicInformation: MedicInformation;
 }
