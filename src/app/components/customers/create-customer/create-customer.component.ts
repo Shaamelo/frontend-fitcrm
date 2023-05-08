@@ -55,8 +55,11 @@ export class CreateCustomerComponent {
         weight: this.form.get('weight')?.value,
         height: this.form.get('height')?.value,
         gender: this.form.get('gender')?.value,
-        diseases: this.form.get('diseases')?.value,
+        diseases: [this.form.get('diseases')?.value],
       },
     };
+    alert('wuu usuario creado');
+    console.log(customer);
+    this.form.reset();
   }
 }

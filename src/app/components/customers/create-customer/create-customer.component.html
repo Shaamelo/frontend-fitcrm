@@ -4,62 +4,90 @@
     <a routerLink="/customers" class="big-button back-button">Regresar</a>
   </div>
   <hr />
-  <form class="customerForm">
+  <form class="customerForm" [formGroup]="form" (ngSubmit)="createCustomer()">
     <div class="personalData">
       <h3>Información personal del cliente</h3>
       <span></span>
       <div class="labeledInput">
-        <label for="name">Nombre</label>
-        <input id="name" type="text" placeholder="Nombre" />
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre" formControlName="name" />
       </div>
       <div class="labeledInput">
-        <label for="name">Fecha nacimiento</label>
-        <input id="date" type="date" />
+        <label>Fecha nacimiento</label>
+        <input type="date" formControlName="birthDate" />
       </div>
       <div class="labeledInput">
         <label for="">Tipo de documento</label>
-        <select name="" id="">
+        <select id="documentType" formControlName="documentType">
           <option value="CC">CC</option>
           <option value="TI">TI</option>
         </select>
       </div>
       <div class="labeledInput">
         <label for="">Número de documento</label>
-        <input type="text" placeholder="Número documento" />
+        <input
+          type="text"
+          placeholder="Número documento"
+          formControlName="documentNumber"
+        />
       </div>
       <div class="labeledInput">
         <label for="">Dirección</label>
-        <input type="text" placeholder="Dirección" />
+        <input type="text" placeholder="Dirección" formControlName="address" />
       </div>
       <div class="labeledInput">
         <label for="">e-mail</label>
-        <input type="email" placeholder="Correo electrónico" />
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          formControlName="email"
+        />
       </div>
       <div class="labeledInput">
         <label for="">Teléfono</label>
-        <input type="number" placeholder="Telefono" />
+        <input type="number" placeholder="Telefono" formControlName="phone" />
       </div>
       <div class="labeledInput">
         <label for="">Días restantes</label>
-        <input type="number" placeholder="Días restantes" />
+        <input
+          type="number"
+          placeholder="Días restantes"
+          formControlName="remainingDays"
+        />
       </div>
       <h3>Contacto de emergencia</h3>
       <span></span>
       <div class="labeledInput">
         <label for="">Nombre </label>
-        <input type="text" placeholder="Nombre" />
+        <input
+          type="text"
+          placeholder="Nombre"
+          formControlName="emergencyName"
+        />
       </div>
       <div class="labeledInput">
-        <label for="">e.mail</label>
-        <input type="text" placeholder="Correo electrónico" />
+        <label for="">e-mail</label>
+        <input
+          type="text"
+          placeholder="Correo electrónico"
+          formControlName="emergencyEmail"
+        />
       </div>
       <div class="labeledInput">
         <label for="">Teléfono</label>
-        <input type="text" placeholder="Telefono" />
+        <input
+          type="text"
+          placeholder="Telefono"
+          formControlName="emergencyPhone"
+        />
       </div>
       <div class="labeledInput">
         <label for="">Relación</label>
-        <input type="text" placeholder="Relación" />
+        <input
+          type="text"
+          placeholder="Relación"
+          formControlName="emergencyRelationship"
+        />
       </div>
     </div>
     <div class="medicalInfo">
@@ -67,15 +95,15 @@
         <h3>Información médica</h3>
         <div class="labeledInput">
           <label for="">Peso (kg)</label>
-          <input type="text" placeholder="Peso" />
+          <input type="number" placeholder="Peso" formControlName="weight" />
         </div>
         <div class="labeledInput">
           <label for="">Altura (m)</label>
-          <input type="text" placeholder="Altura" />
+          <input type="number" placeholder="Altura" formControlName="height" />
         </div>
         <div class="labeledInput">
           <label for="">Género</label>
-          <select name="" id="">
+          <select id="" formControlName="gender">
             <option value="M">Masculino</option>
             <option value="F">Femenino</option>
             <option value="xd">otro</option>
@@ -83,10 +111,14 @@
         </div>
         <div class="labeledInput">
           <label for="">Condiciones médicas</label>
-          <textarea rows="6" placeholder="Condiciones médicas"></textarea>
+          <textarea
+            rows="6"
+            placeholder="Condiciones médicas"
+            formControlName="diseases"
+          ></textarea>
         </div>
       </div>
-      <button type="submit">CREAR CLIENTE</button>
+      <button type="submit" [disabled]="form.invalid">CREAR CLIENTE</button>
     </div>
   </form>
 </div>
