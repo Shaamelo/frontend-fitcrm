@@ -1,1 +1,75 @@
-<p>details-customer works!</p>
+<div class="container">
+  <div class="title">
+    <h1>
+      {{ customer.name }} ({{ customer.remainingDays }} días restantes de plan)
+    </h1>
+    <a routerLink="/customers" class="big-button back-button">Regresar</a>
+  </div>
+  <hr />
+  <div class="customerInfo">
+    <div class="personalInfo">
+      <h2>Datos personales</h2>
+      <hr />
+      <div>
+        <h3>Identificación</h3>
+        <span>{{ customer.documentType }}: {{ customer.documentNumber }}</span>
+      </div>
+      <div>
+        <h3>Fecha de nacimiento</h3>
+        <span>{{ customer.birthDate | date }} - {{ customer.age }} años</span>
+      </div>
+      <div>
+        <h3>Dirección de residencia</h3>
+        <span> {{ customer.address }}</span>
+      </div>
+      <div>
+        <h3>Correo electrónico</h3>
+        <span>{{ customer.email }}</span>
+      </div>
+      <div>
+        <h3>Teléfono de contacto</h3>
+        <span>{{ customer.phone }}</span>
+      </div>
+    </div>
+    <div class="emergencyInfo">
+      <h2>Contacto de emergencia</h2>
+      <hr />
+      <div>
+        <h3>Nombre</h3>
+        <span>{{ customer.emergencyContact.name }}</span>
+      </div>
+      <div>
+        <h3>Correo electrónico</h3>
+        <span>{{ customer.emergencyContact.email }}</span>
+      </div>
+      <div>
+        <h3>Teléfono</h3>
+        <span>{{ customer.emergencyContact.phone }}</span>
+      </div>
+      <div>
+        <h3>Relación / Parentesco</h3>
+        <span>{{ customer.emergencyContact.relationship }}</span>
+      </div>
+    </div>
+    <div class="medicalInfo">
+      <h2>Información médica</h2>
+      <hr />
+      <div>
+        <h3>Peso (kg)</h3>
+        <span>{{ customer.medicInformation.weight }}</span>
+      </div>
+      <div>
+        <h3>Altura (m)</h3>
+        <span>{{ customer.medicInformation.height }}</span>
+      </div>
+      <div>
+        <h3>Genero</h3>
+        <span>{{ customer.medicInformation.gender }}</span>
+      </div>
+      <div>
+        <h3>Enfermedades / Lesiones</h3>
+        <span>{{ customer.medicInformation.diseases }}</span>
+      </div>
+    </div>
+  </div>
+</div>

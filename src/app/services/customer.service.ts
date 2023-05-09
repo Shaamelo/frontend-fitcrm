@@ -16,6 +16,33 @@ export class CustomerService {
   //   return this.http.get<Customer[]>(this.URL);
   // }
 
+  getCustomerInfo(id: string) {
+    return {
+      id: '1',
+      name: 'Gabriel Cornejo',
+      documentType: 'CC',
+      documentNumber: '123456789',
+      birthDate: new Date('2001-03-07').toISOString(),
+      age: 22,
+      address: 'casita',
+      email: 'gabrielcornejo@mail.com',
+      phone: 311123456,
+      remainingDays: 10,
+      emergencyContact: {
+        name: 'persona',
+        email: 'correo@mail.com',
+        phone: '123456789',
+        relationship: 'es complicado',
+      },
+      medicInformation: {
+        weight: 1,
+        height: 1,
+        gender: 'H',
+        diseases: ['uno', 'dos', 'tres'],
+      },
+    };
+  }
+
   getCustomers() {
     return [
       {
