@@ -20,6 +20,15 @@ export class DetailsCustomerComponent implements OnInit {
     this.id = this.aRoute.snapshot.paramMap.get('id');
   }
   ngOnInit(): void {
-    this.customer = this.customersService.getCustomerInfo('1');
+    this.getCustomerInfo();
+  }
+
+  getCustomerInfo() {
+    if (this.id !== null) {
+      this.customersService.getCustomerInfo(this.id).subscribe(data => {
+        console.log(data);
+        this.customer = data;
+      })
+    }
   }
 }

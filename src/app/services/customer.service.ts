@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Customer } from '../types/Customer';
 import { Observable } from 'rxjs';
 
@@ -7,92 +7,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CustomerService {
-  URL: string = '';
+  URL: string = 'http://localhost:8080/customers';
 
-  // constructor(private http: HttpClient) {}
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  // getCustomers2(): Observable<any> {
-  //   return this.http.get<Customer[]>(this.URL);
-  // }
-
-  getCustomerInfo(id: string) {
-    return {
-      id: '1',
-      name: 'Gabriel Cornejo',
-      documentType: 'CC',
-      documentNumber: '123456789',
-      birthDate: new Date('2001-03-07').toISOString().slice(0, 10),
-      age: 22,
-      address: 'casita',
-      email: 'gabrielcornejo@mail.com',
-      phone: 311123456,
-      remainingDays: 10,
-      emergencyContact: {
-        name: 'persona',
-        email: 'correo@mail.com',
-        phone: '123456789',
-        relationship: 'es complicado',
-      },
-      medicInformation: {
-        weight: 1,
-        height: 1,
-        gender: 'M',
-        diseases: ['uno', 'dos', 'tres'],
-      },
-    };
+  getCustomers(): Observable<any> {
+    return this.http.get<Customer[]>(this.URL);
   }
 
-  getCustomers() {
-    return [
-      {
-        id: '1',
-        name: 'Gabriel Cornejo',
-        documentType: 'CC',
-        documentNumber: '123456789',
-        birthDate: new Date('2001-03-07').toISOString(),
-        age: 22,
-        address: 'casita',
-        email: 'gabrielcornejo@mail.com',
-        phone: 311123456,
-        remainingDays: 10,
-        emergencyContact: {
-          name: 'persona',
-          email: 'correo@mail.com',
-          phone: '123456789',
-          relationship: 'es complicado',
-        },
-        medicInformation: {
-          weight: 1,
-          height: 1,
-          gender: 'M',
-          diseases: ['uno', 'dos', 'tres'],
-        },
-      },
-      {
-        id: '2',
-        name: 'Juan Esteban Galeano Herrera',
-        documentType: 'CC',
-        documentNumber: '987654321',
-        birthDate: new Date().toISOString(),
-        age: 22,
-        address: 'casita',
-        email: 'galrepre@mail.com',
-        phone: 322222222,
-        remainingDays: 10,
-        emergencyContact: {
-          name: 'persona',
-          email: 'correo@mail.com',
-          phone: '123456789',
-          relationship: 'a',
-        },
-        medicInformation: {
-          weight: 1,
-          height: 1,
-          gender: 'M',
-          diseases: ['uno', 'dos', 'tres'],
-        },
-      },
-    ];
+  getCustomerInfo(id: string): Observable<Customer> {
+    return this.http.get<Customer>(this.URL + "/" + id);
+  }
+
+  createCustomer(customer: Customer): Observable<any> {
+    return this.http.post(this.URL, customer);
+  }
+
+  updateCustomer(id: string, customer: Customer): Observable<any> {
+    return this.http.put(this.URL + "/" + id, customer);
+  }
+
+  deleteCustomer(id: string): Observable<any> {
+    return this.http.delete(this.URL + "/" + id);
   }
 }

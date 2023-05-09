@@ -58,8 +58,13 @@ export class CreateCustomerComponent {
         diseases: [this.form.get('diseases')?.value],
       },
     };
-    alert('wuu usuario creado');
     console.log(customer);
-    this.form.reset();
+    this.customersService.createCustomer(customer).subscribe(data => {
+      alert('Usuario creado con exito');  
+    }, error => {
+      console.log(error);
+      this.form.reset();
+
+    });
   }
 }

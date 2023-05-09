@@ -19,10 +19,15 @@ export class SendMessageComponent implements OnInit {
     });
   }
   ngOnInit(): void {
-    this.customers = this.customersService.getCustomers();
+    this.getCustomers();
   }
   sendMessage() {
     alert("Mensaje enviado con exito");
     this.form.reset();
+  }
+  getCustomers(): void {
+    this.customersService.getCustomers().subscribe(data => {
+      this.customers = data;
+    })
   }
 }

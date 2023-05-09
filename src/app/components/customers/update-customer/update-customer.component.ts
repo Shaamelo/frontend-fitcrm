@@ -44,56 +44,60 @@ export class UpdateCustomerComponent implements OnInit {
   }
   getCustomerInfo() {
     if (this.id !== null) {
-      const customerInfo = this.customersService.getCustomerInfo(this.id);
-      this.customerName = customerInfo.name;
+      this.customersService.getCustomerInfo(this.id).subscribe(data => {
+        this.customerName = data.name;
 
-      this.form.setValue({
-        name: customerInfo.name,
-        documentType: customerInfo.documentType,
-        documentNumber: customerInfo.documentNumber,
-        birthDate: customerInfo.birthDate.slice(0, 10),
-        address: customerInfo.address,
-        email: customerInfo.email,
-        phone: customerInfo.phone,
-        remainingDays: customerInfo.remainingDays,
-        emergencyName: customerInfo.emergencyContact.name,
-        emergencyEmail: customerInfo.emergencyContact.email,
-        emergencyPhone: customerInfo.emergencyContact.phone,
-        emergencyRelationship: customerInfo.emergencyContact.relationship,
-        weight: customerInfo.medicInformation.weight,
-        height: customerInfo.medicInformation.height,
-        gender: customerInfo.medicInformation.gender,
-        diseases: customerInfo.medicInformation.diseases,
-      });
+        this.form.setValue({
+          name: data.name,
+          documentType: data.documentType,
+          documentNumber: data.documentNumber,
+          birthDate: data.birthDate.slice(0, 10),
+          address: data.address,
+          email: data.email,
+          phone: data.phone,
+          remainingDays: data.remainingDays,
+          emergencyName: data.emergencyContact.name,
+          emergencyEmail: data.emergencyContact.email,
+          emergencyPhone: data.emergencyContact.phone,
+          emergencyRelationship: data.emergencyContact.relationship,
+          weight: data.medicInformation.weight,
+          height: data.medicInformation.height,
+          gender: data.medicInformation.gender,
+          diseases: data.medicInformation.diseases ? data.medicInformation.diseases[0] : "",
+        });
+      })
+
     }
   }
 
   updateCustomer() {
-    console.log(this.form);
-    const customer: Customer = {
-      name: this.form.get('name')?.value,
-      documentType: this.form.get('documentType')?.value,
-      documentNumber: this.form.get('documentNumber')?.value,
-      birthDate: this.form.get('birthDate')?.value,
-      address: this.form.get('address')?.value,
-      email: this.form.get('email')?.value,
-      phone: this.form.get('phone')?.value,
-      remainingDays: this.form.get('remainingDays')?.value,
-      emergencyContact: {
-        name: this.form.get('emergencyName')?.value,
-        email: this.form.get('emergencyEmail')?.value,
-        phone: this.form.get('emergencyPhone')?.value,
-        relationship: this.form.get('emergencyRelationship')?.value,
-      },
-      medicInformation: {
-        weight: this.form.get('weight')?.value,
-        height: this.form.get('height')?.value,
-        gender: this.form.get('gender')?.value,
-        diseases: [this.form.get('diseases')?.value],
-      },
-    };
-    alert('wuu usuario actualizado');
-    console.log(customer);
-    this.form.reset();
+    if (this.id !== null) {
+      const customer: Customer = {
+        name: this.form.get('name')?.value,
+        documentType: this.form.get('documentType')?.value,
+        documentNumber: this.form.get('documentNumber')?.value,
+        birthDate: this.form.get('birthDate')?.value,
+        address: this.form.get('address')?.value,
+        email: this.form.get('email')?.value,
+        phone: this.form.get('phone')?.value,
+        remainingDays: this.form.get('remainingDays')?.value,
+        emergencyContact: {
+          name: this.form.get('emergencyName')?.value,
+          email: this.form.get('emergencyEmail')?.value,
+          phone: this.form.get('emergencyPhone')?.value,
+          relationship: this.form.get('emergencyRelationship')?.value,
+        },
+        medicInformation: {
+          weight: this.form.get('weight')?.value,
+          height: this.form.get('height')?.value,
+          gender: this.form.get('gender')?.value,
+          diseases: [this.form.get('diseases')?.value],
+        },
+      };
+      this.customersService.updateCustomer(this.id, customer).subscribe(data => {
+        alert('Usuario actualizado con exito');
+        console.log(data);
+      })
+    }
   }
 }

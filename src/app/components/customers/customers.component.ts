@@ -12,6 +12,12 @@ export class CustomersComponent implements OnInit {
   customers: Customer[] = [];
 
   ngOnInit(): void {
-    this.customers = this.customersService.getCustomers();
+    this.getCustomers();
+  }
+
+  getCustomers(): void {
+    this.customersService.getCustomers().subscribe(data => {
+      this.customers = data;
+    })
   }
 }
