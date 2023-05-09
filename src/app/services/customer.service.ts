@@ -22,7 +22,7 @@ export class CustomerService {
       name: 'Gabriel Cornejo',
       documentType: 'CC',
       documentNumber: '123456789',
-      birthDate: new Date('2001-03-07').toISOString(),
+      birthDate: new Date('2001-03-07').toISOString().slice(0, 10),
       age: 22,
       address: 'casita',
       email: 'gabrielcornejo@mail.com',
@@ -37,7 +37,7 @@ export class CustomerService {
       medicInformation: {
         weight: 1,
         height: 1,
-        gender: 'H',
+        gender: 'M',
         diseases: ['uno', 'dos', 'tres'],
       },
     };
@@ -65,7 +65,7 @@ export class CustomerService {
         medicInformation: {
           weight: 1,
           height: 1,
-          gender: 'H',
+          gender: 'M',
           diseases: ['uno', 'dos', 'tres'],
         },
       },
@@ -89,7 +89,7 @@ export class CustomerService {
         medicInformation: {
           weight: 1,
           height: 1,
-          gender: 'H',
+          gender: 'M',
           diseases: ['uno', 'dos', 'tres'],
         },
       },

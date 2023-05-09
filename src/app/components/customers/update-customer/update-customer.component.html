@@ -1,1 +1,126 @@
-<p>update-customer works!</p>
+<div class="container">
+  <div class="title">
+    <h1>Actualizar Cliente: {{ customerName }}</h1>
+    <a routerLink="/customers" class="big-button back-button">Regresar</a>
+  </div>
+  <hr />
+  <form class="customerForm" [formGroup]="form" (ngSubmit)="updateCustomer()">
+    <div class="personalData">
+      <h3>Información personal del cliente</h3>
+      <span></span>
+      <div class="labeledInput">
+        <label>Nombre</label>
+        <input type="text" placeholder="Nombre" formControlName="name" />
+      </div>
+      <div class="labeledInput">
+        <label>Fecha nacimiento</label>
+        <input type="date" formControlName="birthDate" />
+      </div>
+      <div class="labeledInput">
+        <label for="">Tipo de documento</label>
+        <select id="documentType" formControlName="documentType">
+          <option value="CC">CC</option>
+          <option value="TI">TI</option>
+        </select>
+      </div>
+      <div class="labeledInput">
+        <label for="">Número de documento</label>
+        <input
+          type="text"
+          placeholder="Número documento"
+          formControlName="documentNumber"
+        />
+      </div>
+      <div class="labeledInput">
+        <label for="">Dirección</label>
+        <input type="text" placeholder="Dirección" formControlName="address" />
+      </div>
+      <div class="labeledInput">
+        <label for="">e-mail</label>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          formControlName="email"
+        />
+      </div>
+      <div class="labeledInput">
+        <label for="">Teléfono</label>
+        <input type="number" placeholder="Telefono" formControlName="phone" />
+      </div>
+      <div class="labeledInput">
+        <label for="">Días restantes</label>
+        <input
+          type="number"
+          placeholder="Días restantes"
+          formControlName="remainingDays"
+        />
+      </div>
+      <h3>Contacto de emergencia</h3>
+      <span></span>
+      <div class="labeledInput">
+        <label for="">Nombre </label>
+        <input
+          type="text"
+          placeholder="Nombre"
+          formControlName="emergencyName"
+        />
+      </div>
+      <div class="labeledInput">
+        <label for="">e-mail</label>
+        <input
+          type="text"
+          placeholder="Correo electrónico"
+          formControlName="emergencyEmail"
+        />
+      </div>
+      <div class="labeledInput">
+        <label for="">Teléfono</label>
+        <input
+          type="text"
+          placeholder="Telefono"
+          formControlName="emergencyPhone"
+        />
+      </div>
+      <div class="labeledInput">
+        <label for="">Relación</label>
+        <input
+          type="text"
+          placeholder="Relación"
+          formControlName="emergencyRelationship"
+        />
+      </div>
+    </div>
+    <div class="medicalInfo">
+      <div class="medicalContainer">
+        <h3>Información médica</h3>
+        <div class="labeledInput">
+          <label for="">Peso (kg)</label>
+          <input type="number" placeholder="Peso" formControlName="weight" />
+        </div>
+        <div class="labeledInput">
+          <label for="">Altura (m)</label>
+          <input type="number" placeholder="Altura" formControlName="height" />
+        </div>
+        <div class="labeledInput">
+          <label for="">Género</label>
+          <select id="" formControlName="gender">
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+            <option value="xd">otro</option>
+          </select>
+        </div>
+        <div class="labeledInput">
+          <label for="">Condiciones médicas</label>
+          <textarea
+            rows="6"
+            placeholder="Condiciones médicas"
+            formControlName="diseases"
+          ></textarea>
+        </div>
+      </div>
+      <button type="submit" [disabled]="form.invalid">
+        ACTUALIZAR CLIENTE
+      </button>
+    </div>
+  </form>
+</div>
