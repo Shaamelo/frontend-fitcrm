@@ -28,19 +28,18 @@ export class SendMessageComponent implements OnInit {
     this.getCustomers();
   }
   sendMessage() {
-    alert('Mensaje enviado con exito');
     const email: Email = {
-      address: this.form.get('target')?.value,
+      addressee: this.form.get('target')?.value,
       subject: this.form.get('title')?.value,
       body: this.form.get('message')?.value,
     };
+    this.form.reset();
     this.messaginService.sendEmail(email).subscribe(
       (res) => {
-        console.log(res);
+        alert('Mensaje enviado con exito');
       },
       (e) => {
         console.log(e);
-        this.form.reset();
       }
     );
   }

@@ -1,5 +1,5 @@
 export interface Email {
-  address: string;
+  addressee: string;
   subject: string;
   body: string;
 }
