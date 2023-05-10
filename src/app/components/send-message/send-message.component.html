@@ -1,40 +1,50 @@
 <div class="crm-container">
-    <div class="title">
-        <h1>Enviar mensaje</h1>
+  <div class="title">
+    <h1>Enviar mensaje</h1>
+  </div>
+  <hr />
+  <form class="message-form" [formGroup]="form" (ngSubmit)="sendMessage()">
+    <div class="form-input">
+      <label for="target">Cliente</label>
+      <select name="target" id="target" formControlName="target">
+        <ng-container *ngFor="let customer of customers">
+          <option value="{{ customer.email }}">{{ customer.name }}</option>
+        </ng-container>
+      </select>
+      <ng-container
+        *ngIf="
+          form.get('target')?.hasError('required') &&
+          form.get('target')?.touched
+        "
+      >
+        <p class="error-msg">Debes completar este campo</p>
+      </ng-container>
     </div>
-    <hr>
-    <form class="message-form" [formGroup]="form" (ngSubmit)="sendMessage()">
-        <div class="form-input">
-            <label for="type">Tipo de mensaje</label>
-            <select name="type" id="type" formControlName="type">
-                <option value="ofertas">Oferta</option>
-                <option value="clases">Clase</option>
-                <option value="anuncios">Anuncio</option>
-            </select>
-            <ng-container *ngIf="form.get('type')?.hasError('required') && form.get('type')?.touched">
-                <p class="error-msg">Debes completar este campo</p>
-            </ng-container>
-        </div>
-        <div class="form-input">
-            <label for="target">Cliente</label>
-            <select name="target" id="target" formControlName="target">
-                <ng-container *ngFor="let customer of customers">
-                    <option value="{{customer.id}}">{{customer.name}}</option>
-                </ng-container>
-            </select>
-            <ng-container *ngIf="form.get('target')?.hasError('required') && form.get('target')?.touched">
-                <p class="error-msg">Debes completar este campo</p>
-            </ng-container>
-        </div>
-        <div class="form-textarea">
-            <label for="message">Cuerpo del mensaje</label>
-            <textarea rows="5" id="message" formControlName="message">
-
-            </textarea>
-            <ng-container *ngIf="form.get('message')?.hasError('required') && form.get('message')?.touched">
-                <p class="error-msg">Debes completar este campo</p>
-            </ng-container>
-        </div>
-        <button class="submit-button" [disabled]="form.invalid" type="submit">ENVIAR MENSAJE</button>
-    </form>
+    <div class="form-input">
+      <label for="title">Asunto</label>
+      <input type="text" formControlName="title" />
+      <ng-container
+        *ngIf="
+          form.get('title')?.hasError('required') && form.get('title')?.touched
+        "
+      >
+        <p class="error-msg">Debes completar este campo</p>
+      </ng-container>
+    </div>
+    <div class="form-textarea">
+      <label for="message">Cuerpo del mensaje</label>
+      <textarea rows="5" id="message" formControlName="message"> </textarea>
+      <ng-container
+        *ngIf="
+          form.get('message')?.hasError('required') &&
+          form.get('message')?.touched
+        "
+      >
+        <p class="error-msg">Debes completar este campo</p>
+      </ng-container>
+    </div>
+    <button class="submit-button" [disabled]="form.invalid" type="submit">
+      ENVIAR MENSAJE
+    </button>
+  </form>
 </div>
